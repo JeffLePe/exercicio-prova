@@ -2,6 +2,7 @@
 
 const express = require("express")
 const bodyparser = require("body-parser")
+//const result = require('apresentaResult')
 
 const app = express()
 app.use(bodyparser.json())
@@ -19,6 +20,7 @@ app.post("/auth", function(request, response) {
     var impostoDeRenda = calcIRPF(salarioDescontado)
     var salarioLiquido = descSalario(salarioDescontado, impostoDeRenda)
     response.send("Valor recebido: " + salario + " INSS: " + descontoINSS.toFixed(2) + " IRPF: " + impostoDeRenda.toFixed(2) + " Salario Liquido: " +salarioLiquido.toFixed(2))    
+    
 })
 
 function calcINSS(salario) {
@@ -58,6 +60,8 @@ function calcIRPF(salarioDescontado) {
     
     return (salarioDescontado * alicota) - deducao
 }
+
+
 
 
 //Servidor
